@@ -1,31 +1,24 @@
-import { useEffect, useMemo, useState } from "react";
+import { Task } from "../../types/types";
 
 type TaskListItemProps = {
     checked: boolean;
     id: number;
-    taskBody: string;
-    onChange: (index: number, value: boolean) => void;
+    task: Task;
+    onChange: (task: Task, value: boolean) => void;
 }
 
-function TaskListItem({ checked, id, taskBody, onChange }: TaskListItemProps) {
-
-    const [complete, setComplete] = useState<boolean>(checked);
-
-    useEffect(() => {
-        if (complete !== checked) {
-            onChange(id, complete);
-        }
-    }, [complete])
+function TaskListItem({ checked, id, task, onChange }: TaskListItemProps) {
 
     return (
-        <div className="item">
+        <li className="item">
             <input
                 type='checkbox'
-                checked={checked}
+                checked={task.complete}
                 id={`active-toggle-${id}`}
-                onChange={(e) => setComplete(!complete)} />
-            <label htmlFor={`active-toggle-${id}`}>{taskBody}</label>
-        </div>
+                onChange={(e) => onChange(task, !checked)}
+            />
+            <label htmlFor={`active-toggle-${id}`}>{task.taskBody}</label>
+        </li>
     );
 }
 

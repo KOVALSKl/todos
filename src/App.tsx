@@ -1,8 +1,6 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
 import SelectInput from './components/SelectInput/SelectInput';
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { ActiveTasksType, Task } from './types/types';
 import TasksList from './components/TaskList/TasksList';
 import FilterTypeButton from './components/FilterTypeButton/FilterTypeButton';

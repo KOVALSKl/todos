@@ -1,4 +1,4 @@
-import { Children, ReactElement, ReactNode } from "react";
+import { ReactElement, ReactNode } from "react";
 import { ActiveTasksType } from "../../types/types";
 
 type FilterTypeButtonProps = {

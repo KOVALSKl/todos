@@ -23,6 +23,7 @@ function SelectInput({ onKeyDown, onClick, listActive }: SelectInputProps) {
         <div className="select-input">
             <img
                 src={require('../../assets/Vector.svg').default}
+                alt="tasks list"
                 className={['dropdown-icon', (listActive) ? 'active' : ''].join(' ')}
                 onClick={() => onClick(!listActive)}
             />
