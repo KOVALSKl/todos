@@ -1,6 +1,6 @@
 import './App.scss';
 import SelectInput from './components/SelectInput/SelectInput';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ActiveTasksType, Task } from './types/types';
 import TasksList from './components/TaskList/TasksList';
 import FilterTypeButton from './components/FilterTypeButton/FilterTypeButton';
@@ -8,13 +8,19 @@ import FilterTypeButton from './components/FilterTypeButton/FilterTypeButton';
 
 function App() {
 
-  const [tasks, setTasks] = useState<Task[]>([
-    { taskBody: 'Тестовое Задание', complete: false },
-    { taskBody: 'Прекрасный код', complete: true },
-    { taskBody: 'Покрытие тестами', complete: false }
-  ]);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [showListBox, setShowListbox] = useState<boolean>(false);
   const [currentFilterType, setCurrentFilterType] = useState<ActiveTasksType>(ActiveTasksType.ALL);
+
+  useEffect(() => {
+    const storage = localStorage.getItem('tasks');
+    if (storage) setTasks(JSON.parse(storage));
+  }, [])
+
+
+  useEffect(() => {
+    if (tasks.length > 0) localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks])
 
 
   function addNewTask(task: Task) {
