@@ -67,7 +67,9 @@ function App() {
               Completed
             </FilterTypeButton>
           </div>
-          <span onClick={() => clearActiveTasks()}>Clear completed</span>
+          <button onClick={() => clearActiveTasks()} className='clear-completed-btn'>
+            Clear completed
+          </button>
         </div>
       </div>
     </div>

@@ -12,15 +12,20 @@ function SelectInput({ onKeyDown, onClick, listActive }: SelectInputProps) {
 
     const [inputValue, setInputValue] = useState<string>('');
 
-    function addNewTask(code: string) {
-        if (code === 'Enter' && inputValue !== '') {
+    function addNewTask() {
+        if (inputValue !== '') {
             onKeyDown({ taskBody: inputValue, complete: false })
             setInputValue('')
         }
     }
 
     return (
-        <div className="select-input">
+        <form
+            className="select-input"
+            onSubmit={(e) => {
+                e.preventDefault()
+                addNewTask()
+            }}>
             <img
                 src={require('../../assets/Vector.svg').default}
                 alt="tasks list"
@@ -31,8 +36,8 @@ function SelectInput({ onKeyDown, onClick, listActive }: SelectInputProps) {
                 value={inputValue}
                 placeholder='What needs to be done?'
                 onChange={(e) => setInputValue(e.target.value)}
-                onKeyDown={(e) => addNewTask(e.code)} />
-        </div>
+            />
+        </form>
     );
 }
 

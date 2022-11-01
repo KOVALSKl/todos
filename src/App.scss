@@ -27,7 +27,8 @@
 }
 
 .container .sub-info {
-  & {
+  &,
+  & .clear-completed-btn {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -41,6 +42,18 @@
     border-top: none;
 
     padding: 7px 5px;
+  }
+
+  & .clear-completed-btn {
+    border: none;
+    background: transparent;
+
+    transition: border 400ms ease;
+  }
+
+  & .clear-completed-btn:active {
+    border: 1px solid gray;
+    border-radius: 10px;
   }
 
   & .sort-type-toggles-container {
